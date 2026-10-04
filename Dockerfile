@@ -1,5 +1,5 @@
 # 1. Build Stage
-FROM eclipse-temurin:17-jdk-alpine AS build
+FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 
 # Gradle Wrapper 및 소스 복사
@@ -14,7 +14,7 @@ RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test --no-daemon
 
 # 2. Run Stage
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Build Stage에서 생성된 jar 파일을 복사
