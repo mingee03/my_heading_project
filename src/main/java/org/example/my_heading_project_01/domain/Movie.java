@@ -9,16 +9,13 @@ public class Movie {
     private String year;
     private int view;
 
-    public Movie() {
-        this.id = null;
-        this.title = null;
-        this.director = null;
-        this.genre = null;
-        this.year = null;
-        this.view = 0;
-    }
-
     public Movie(Long id, String title, String director, String genre, int view, String year) {
+        this.id = id;
+        this.title = title;
+        this.director = director;
+        this.genre = genre;
+        this.view = view;
+        this.year = year;
     }
 
     // TODO 3. 모든 필드에 대한 Getter와 Setter를 생성하세요.
