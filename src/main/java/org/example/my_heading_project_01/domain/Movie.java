@@ -1,17 +1,27 @@
 package org.example.my_heading_project_01.domain;
 
 public class Movie {
+
     private Long id;
     private String title;
     private String director;
     private String genre;
+    private String year;
+    private int view;
 
     public Movie() {
         this.id = null;
         this.title = null;
         this.director = null;
         this.genre = null;
+        this.year = null;
+        this.view = 0;
     }
+
+    public Movie(Long id, String title, String director, String genre, int view, String year) {
+    }
+
+    // TODO 3. 모든 필드에 대한 Getter와 Setter를 생성하세요.
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }
@@ -20,4 +30,8 @@ public class Movie {
     public void setDirector(String director) { this.director = director; }
     public String getGenre() { return genre; }
     public void setGenre(String genre) { this.genre = genre; }
+    public String getYear() { return year; }
+    public void setYear(String year) { this.year = year; }
+    public int getView() { return view; }
+    public void setView(int view) { this.view = view; }
 }
