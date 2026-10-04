@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface MovieRepository {
     Movie save(Movie movie);
     List<Movie> findAll();
-    Optional<Movie> findById(int id);
+    Optional<Movie> findById(Long id);
     Movie update(Movie movie);
-    void deleteById(int id);
+    void deleteById(Long id);
 }
