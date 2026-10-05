@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
@@ -18,9 +19,18 @@ public class MovieService {
     public MovieResponse create(MovieRequest r) {
         return toResponse(repository.save(new Movie(null, r.title(), r.director(), r.genre(), r.view(), r.year())));
     }
-    public List<MovieResponse> findAll(){
-        return  repository.findAll().stream().map(this::toResponse).toList();
+    
+    // 장르 필터링 추가 (B 기능)
+    public List<MovieResponse> findAll(String genre) {
+        List<Movie> movies = repository.findAll();
+        if (genre != null && !genre.isEmpty()) {
+            movies = movies.stream()
+                    .filter(m -> m.getGenre().equalsIgnoreCase(genre))
+                    .collect(Collectors.toList());
+        }
+        return movies.stream().map(this::toResponse).toList();
     }
+    
     public MovieResponse findById(Long id) {
         return toResponse(findMovie(id));
     }
@@ -30,7 +40,8 @@ public class MovieService {
         m.setDirector(r.director());
         m.setGenre(r.genre());
         m.setYear(r.year());
-        return toResponse(repository.save(m));
+        m.setView(r.view());
+        return toResponse(repository.update(m)); // 버그 수정: save -> update
     }
     public void delete(Long id) {
         findMovie(id);
