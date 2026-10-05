@@ -18,7 +18,6 @@ public class Movie {
         this.year = year;
     }
 
-    // TODO 3. 모든 필드에 대한 Getter와 Setter를 생성하세요.
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }

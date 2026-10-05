@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository // 스프링 빈으로 등록
+@Repository
 public class MovieMemoryRepository implements MovieRepository {
     private final Map<Long, Movie> store = new LinkedHashMap<>();
     private long sequence = 0L;
